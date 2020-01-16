@@ -1,3 +1,11 @@
+/*
+Kellen Haas
+CPSC 1021
+Lab 1
+1/15/20
+*/
+
+
 #include <iostream>
 using namespace std;
 
