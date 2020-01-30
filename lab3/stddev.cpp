@@ -8,6 +8,7 @@
 #include "stddev.h"
 using namespace std;
 
+
 float calMean(float* data, int n){
     float mean = 0;
 
@@ -36,7 +37,7 @@ float calVariance(float* data, int n){
 }
 
 
-float calStdev(float* data, int n){
+float calStddev(float* data, int n){
     float mean = 0;
 
     for(int i = 0; i < n; i++) {
@@ -81,8 +82,6 @@ void output(Stats* s1, Stats* s2, Stats* s3, void (*maxOrMin)(Stats*, Stats*, St
 
 
 
-
-
 void min(Stats* s1, Stats* s2, Stats* s3){
     float min = 10000;
 
@@ -96,7 +95,7 @@ void min(Stats* s1, Stats* s2, Stats* s3){
     if(min > s3->stat) {
         min = s3->stat;
     }
-    cout << "min: " << min << endl;
+    cout << "\t\tMinimum: " << setw(19) << min << endl;
 }
 
 
@@ -112,5 +111,5 @@ void max(Stats* s1, Stats* s2, Stats* s3){
     if(max < s3->stat) {
         max = s3->stat;
     }
-    cout << "max: " << max << endl;
+    cout << "\t\tMaximum: " << setw(14) << max << endl;
 }
