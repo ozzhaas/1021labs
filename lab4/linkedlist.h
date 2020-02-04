@@ -1,32 +1,35 @@
-#ifndef MYLIST_H
-#define MYLIST_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
-   struct listNode {
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+
+
+    struct listNode {
         int data;
         struct listNode* prev;
         struct listNode* next;
-   };
+    };
 
-   typedef struct listNode Node;
-   typedef Node* NodePtr;
+    typedef struct listNode Node;
+    typedef Node* NodePtr;
 
-   NodePtr head = NULL;
-   NodePtr tail = NULL;
-   
-   
 
-   static int nodeCount = 0;
+//   static int nodeCount = 0;
 
-   bool isEmpty();
-   NodePtr makeNewNode(int); 
+    void fileRead();
+    bool isEmpty();
+    NodePtr makeNewNode(int);
 
-   void insertAtFront(const NodePtr);
-   void insertAtEnd(const NodePtr);
+    void insertAtFront(const NodePtr);
+    void insertAtEnd(const NodePtr);
 
-   void deleteFromFront( );
-   void deleteFromEnd( );
+    void deleteFromFront( );
+    void deleteFromEnd( );
 
-   void printlist();
+    void printList();
 
 
 #endif
