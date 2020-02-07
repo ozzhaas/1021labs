@@ -4,30 +4,22 @@
 #include "linkedlist.h"
 
 
-using namespace std;
+/************************************************************************
+void fileRead() Function:
+    Parameters: No parameters
+    Return: void
+    Function creates a file pointer and opens the file input text using
+	the file stream. It then checks to make sure the file opened properly
+	and then proceeds to read all of the numbers from the file. Each time
+	it reads a number from the file, it creates a new Node using that
+	number as the data of the node. Then the function calls
+	insertStrategic() to insert the new node into the list in ascending
+	order. This process continues until all of the numbers are read
+	from the file.
+*************************************************************************/
+void fileRead();
 
-void fileRead() {
-    int num;
-    NodePtr newN = nullptr;
 
-    ifstream fptr;
-    fptr.open("input.txt");
 
-    // make sure file exists, give message and exit otherwise
-    if (fptr.is_open()) {
-        // while we still have items to read
-        while(fptr >> num){
-            cout << "Num is:  " << num << endl;
-            newN = makeNewNode(num);
-            insertAtFront(newN);
-        }
-    }
-    else {
-        cout << ("Error! Could not open file provided.\n");
-        exit(1);
-    }
-    fptr.close();  // close the file
-
-}
 
 #endif

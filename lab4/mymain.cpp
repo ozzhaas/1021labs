@@ -1,3 +1,10 @@
+/*Kellen Haas
+ *CPSC 1021
+ *Lab4
+ *2/7/20
+*/
+
+
 #include "linkedlist.h"
 #include "fileio.h"
 
@@ -6,50 +13,61 @@ using namespace std;
 
 int main (){
 
-    fileRead();
     NodePtr newNode = NULL;
 
-    // after you implemented your functions in .cpp file
-	// - use the code below for testing your linked list.
-	// Demonstrate that ALL functions are working correctly.
-
-	// After that add code for reading data from inpout file.
-	// Every time you read an integer, create a node and insert it
-	// in the ascending order into the list.
-
-	// At the end print the entire list to show that your code
-	// functions correctly.
 
 
-
+    /*Add numbers 0, 1, 2, 3, 4 to the list*/
     for (int i = 0; i < 5; i++){
         newNode = makeNewNode (i);
-        insertAtFront(newNode);
+        insertAtEnd(newNode);
     }
 
+    /*Call the function to read numbers from the text file and create
+      a new node for each number and then add them to the list in
+      ascending order.*/
+    fileRead();
+
+    cout << "\n\t\t~~~~~~~~~~~~~ Linked Lists in C++ ~~~~~~~~~~~~~\n";
+
+    cout << "\nThe original list: \n";
+    /*Call the function to print the complete list*/
     printList();
 
-    cout << "After DeleteFromFront: " << endl;
+    cout << "\nAfter DeleteFromFront function: " << endl;
+
+    /*Call the function to delete a number from the front of the list*/
     deleteFromFront();
     printList();
 
     NodePtr seven = makeNewNode(7);
+
+    /*Call the function to insert the new node just made (above) into the
+      list at the end*/
     insertAtEnd(seven);
-    cout <<"Inserting seven at END" << endl;
+    cout <<"\nInserting seven at the end of the list" << endl;
     printList();
 
     NodePtr eight = makeNewNode(8);
+    /*Call the function to insert the new node just made (above) into the
+      list at the end*/
     insertAtEnd(eight);
-    cout <<"Inserting eight at END" << endl;
+    cout <<"\nInserting eight at the end of the list" << endl;
     printList();
 
-    cout << "After deleting eight: " << endl;
+    cout << "\nAfter deleting eight from the end of the list: " << endl;
+    /*Call the function to delete the new node at the end of the
+      list*/
     deleteFromEnd();
     printList();
 
-    cout << "After deleting seven:" << endl;
+    cout << "\nAfter deleting seven from the end of the list:" << endl;
+    /*Call the function to delete the new node at the end of the
+      list*/
     deleteFromEnd();
     printList();
+
+    cout << endl;
 
 
 
