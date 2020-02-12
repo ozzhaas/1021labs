@@ -34,19 +34,8 @@ int main () {
     }
 
 
-
-
-
     in_file.close();
     out_file.close();
-
-
-
-
-
-
-
-
 
 
 }
