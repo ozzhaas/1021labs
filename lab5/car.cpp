@@ -35,13 +35,18 @@ int Car::getYear() {return year;}
 double Car::getPrice() {return price;}
 
 
+/****************************************************************************
+    Use stringstream to format the data for the Car's info into a string
+    that fits into a table. Then return this formatted string so it can be
+    printed to the output file in main.
+****************************************************************************/    
 string Car::printCarInfo(Car tempCar) {
     stringstream string;
 
 
     string << "Make:" << setw(19) << right << make << "\n" << "Model:" << setw(18) << right << model << "\n";
 
-    if (tempCar.getYear() < 1990) {
+    if (isClassic(tempCar)) {
         string << "Year:" << setw(19) << right << year << " (Classic Car!)" << "\n" << "Price:" << setw(10) << right << "$" << fixed << setprecision(2) << price << "\n";
     }
     else {
@@ -52,8 +57,8 @@ string Car::printCarInfo(Car tempCar) {
 }
 
 
-bool Car::isClassic() {
-    Car tempCar;
+
+bool Car::isClassic(Car tempCar) {
 
     if (tempCar.getYear() < 1990) {return true;}
     else {return false;}
