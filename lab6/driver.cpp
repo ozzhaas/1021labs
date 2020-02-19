@@ -15,14 +15,11 @@ int main () {
     Dog mainDog;
 
 
+
+    mainDog.printDogInfo();
+
+
     cout << mainDog.getDogCount() << endl;
-
-
-
-
-
-
-
 
 
 

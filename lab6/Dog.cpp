@@ -20,9 +20,10 @@ Dog::Dog(string dogBreed, int dogAge) {
     string ownName = "default";
 
     cout << "Enter your name and age: \n";
-    cin >> ownName >> ownAge;
+    cin >> ownAge >> ownName;
 
     owner = new Owner(ownName, ownAge);
+
 }
 
 
@@ -51,7 +52,8 @@ void Dog::setAge(int dogAge) {
 
 
 void Dog::printDogInfo() {
-
+    cout << owner->getName() << endl;
+    cout << owner->getAge() << endl;
 }
 
 
