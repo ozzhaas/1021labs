@@ -12,7 +12,11 @@ using namespace std;
 
 int main () {
 
-    Dog mainDog;
+    string breed = "spaniel";
+    int age = 7;
+
+
+    Dog mainDog(breed, age);
 
 
 

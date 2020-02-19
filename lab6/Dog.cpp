@@ -20,7 +20,7 @@ Dog::Dog(string dogBreed, int dogAge) {
     string ownName = "default";
 
     cout << "Enter your name and age: \n";
-    cin >> ownAge >> ownName;
+    cin >> ownName >> ownAge;
 
     owner = new Owner(ownName, ownAge);
 
