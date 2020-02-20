@@ -12,7 +12,7 @@ using namespace std;
 
 int main () {
 
-    Dog mainDog;
+    Dog mainDog();
 
 
 
