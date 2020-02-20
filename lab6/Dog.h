@@ -23,6 +23,7 @@ using namespace std;
 class Dog {
 
     private:
+        string d_name;
         string breed;
         int age;
         Owner* owner;
@@ -30,13 +31,16 @@ class Dog {
 
     public:
         Dog();
-        Dog(string, int);
+        Dog(string, string, int, string, int);
         ~Dog();
+        string getName();
         string getBreed();
         int getAge();
+        void setName(string);
         void setBreed(string);
         void setAge(int);
-        void printDogInfo();
+        void printDogInfo(Dog);
+        static void incrementCount();
         static int getDogCount();
 
 };
