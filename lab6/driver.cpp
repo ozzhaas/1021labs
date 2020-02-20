@@ -12,7 +12,15 @@ using namespace std;
 
 int main () {
 
+<<<<<<< HEAD
     Dog mainDog();
+=======
+    string breed = "spaniel";
+    int age = 7;
+
+
+    Dog mainDog(breed, age);
+>>>>>>> 072324e13688ae2e9a494919c08c43c814959255
 
 
 
