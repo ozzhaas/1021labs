@@ -56,11 +56,11 @@ void Dog::setAge(int dogAge) {
 void Dog::printDogInfo(Dog tempDog) {
     tempDog.incrementCount();
     cout << "\t\tDog " << tempDog.getDogCount() << ":\n\n";
-    cout << "Owner's Info: " << setw(13) << right
+    cout << "Owner's Info: " << setw(18) << right
          << owner->getName() << ", " << owner->getAge() << endl;
-    cout << "Dog's Name: " << setw(19) << right << tempDog.getName() << endl;
-    cout << "Dog's Breed: " << setw(18) << right << tempDog.getBreed() << endl;
-    cout << "Dog's Age: " << setw(20) << right << tempDog.getAge() << endl
+    cout << "Dog's Name: " << setw(24) << right << tempDog.getName() << endl;
+    cout << "Dog's Breed: " << setw(23) << right << tempDog.getBreed() << endl;
+    cout << "Dog's Age: " << setw(25) << right << tempDog.getAge() << endl
          << endl << endl;
 }
 
