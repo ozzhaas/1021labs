@@ -16,7 +16,7 @@ HDRS := \
 		$(wildcard src/**/*.h) \
 
 
-OBJS := $(patsubst %.cpp, bin/%.o, $(wildcard *.cpp))
+OBJS := $(patsubst %.cpp, bin/%.o, $(lonewildcard *.cpp))
 OBJS += $(filter %.o, $(patsubst src/%.cpp, bin/%.o, $(C_SRCS)))
 
 
