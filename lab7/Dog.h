@@ -1,14 +1,19 @@
 /*Kellen Haas
  *CPSC 1021
- *Lab7
- *2/25/20
+ *Lab6
+ *2/18/20
 */
 
 #ifndef DOG_H
 #define DOG_H
 
 
-
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <iomanip>
+#include <sstream>
+#include <stdio.h>
 #include "Owner.h"
 
 
