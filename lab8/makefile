@@ -1,5 +1,5 @@
 make:
-	g++ lab8.cpp -g -Wall -std=c++11
+	g++ lab8Driver.cpp Pixel.cpp header.cpp -fopenmp -g -std=c++11
 
 run:
 	./a.out

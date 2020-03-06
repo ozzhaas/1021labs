@@ -4,13 +4,14 @@
  *3/3/20
 */
 
-#ifndef LAB8_H
-#define LAB8_H
+#ifndef PIXEL_H
+#define PIXEL_H
 
-
+#include <omp.h>
 #include <iostream>
 #include <stdio.h>
 #include <fstream>
+#include "header.h"
 
 using namespace std;
 
@@ -18,7 +19,9 @@ using namespace std;
 class Pixel
 {
     private:
-        unsigned char red, green, blue;
+        unsigned char red;
+        unsigned char green;
+        unsigned char blue;
 
     public:
         Pixel(unsigned char r = 0, unsigned char g = 0, unsigned char b = 0);
@@ -34,11 +37,8 @@ class Pixel
 
 };
 
-
-const int h = 480, w = 640;
-
 bool checkFile(ofstream&);
 
-void printPixels(ofstream&, Pixel);
+const int h = 480, w = 640;
 
 #endif
