@@ -11,42 +11,61 @@
 using namespace std;
 
 
-void readTweet(fstream& input, vector<TweetParser>& vec){
+void readTweet(fstream& input, TweetParser& tweets){
     string line;
-    string words;
-    vector<string> vecWords;
-    const string typs = "typ";
-    const string dets = "det";
-    const string locs = "loc";
-    const string lats = "lat";
-    const string lons = "lng";
+    string words[300];
+    string noHash;
+    string typs;
+    string dets;
+    string locs;
+    string lats;
+    string lons;
     int numofLines = 0;
-
-    while (getline(input, words, '#')) {
-        stringstream string(line);
-        string >> words;
-        int pos = words.find(';');
-        cout << words.substr(0, pos) << endl;
-        vecWords.push_back(words);
-
-        // vecWords.push_back(words);
-        vector<TweetParser> tweets;
-        numofLines++;
-    }
+    int i = 0;
 
 
-    for (unsigned int i = 0; i < vecWords.size(); i++){
-        if (vecWords.at(i) == typs) {
-            vecWords.erase(vecWords.at(i));
+    while (getline(input, noHash, '#')) {
+        stringstream string(noHash);
+        getline(string, line, ';');
+        stringstream wordStream(line);
+        while (wordStream >> words[i]) {
+            cout << "Pos: " << i << " " << words[i] << endl;
+            numofLines++;
+            i++;
         }
-        cout << vecWords.at(i) << endl;
     }
+
+    for (int j = 0; j < numofLines; j++) {
+        if (words[j] == "typ"){
+            if (words[j+2] == "det") {
+                tweets.setType(words[j+1]);
+            }
+            else {
+                typs = words[j + 1] + " " + words[j + 2];
+
+                tweets.setType(typs);
+            }
+            cout << "Category: " << tweets.getType() << endl;
+        }
+        else if (words[j] == "det") {
+            int start = words[j].find("det");
+            int end = words[j].find("loc");
+3
+
+        }
+        else if (words[j] == "loc") {
+
+        }
+        else if (words[j] == "lat") {
+
+        }
+        else if (words[j] == "lng") {
+
+        }
+    }
+
 
     cout << numofLines << endl;
-
-
-
-
 }
 
 

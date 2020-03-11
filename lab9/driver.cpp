@@ -19,7 +19,7 @@ int main (int argc, char* argv[]) {
     fstream input;
     isOpen(input, argv[1], ios::in);
 
-    vector<TweetParser> tweets;
+    TweetParser tweets;
 
 
     readTweet(input, tweets);

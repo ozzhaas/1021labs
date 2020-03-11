@@ -17,7 +17,7 @@
 #include <tuple>
 #include "tweetParser.h"
 
-void readTweet(fstream&, vector<TweetParser>&);
+void readTweet(fstream&, TweetParser&);
 void isOpen(fstream&, char*, ios::openmode);
 bool checkArgs(int);
 void printTweet(fstream&);
