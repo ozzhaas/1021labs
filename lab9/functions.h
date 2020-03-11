@@ -13,6 +13,8 @@
 #include <sstream>
 #include <fstream>
 #include <iomanip>
+#include <algorithm>
+#include <tuple>
 #include "tweetParser.h"
 
 void readTweet(fstream&, vector<TweetParser>&);

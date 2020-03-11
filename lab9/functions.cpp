@@ -13,32 +13,39 @@ using namespace std;
 
 void readTweet(fstream& input, vector<TweetParser>& vec){
     string line;
-    vector<string> words;
-    string typs = "typ";
-    string dets = "det";
-    string locs = "loc";
-    string lats = "lat";
-    string lons = "lng";
+    string words;
+    vector<string> vecWords;
+    const string typs = "typ";
+    const string dets = "det";
+    const string locs = "loc";
+    const string lats = "lat";
+    const string lons = "lng";
     int numofLines = 0;
-    int i = 0;
 
-    while (getline(input, line, '#')) {
-        stringstream s(line);
-        while (s >> words) {
-            TweetParser tweets;
-        
+    while (getline(input, words, '#')) {
+        stringstream string(line);
+        string >> words;
+        int pos = words.find(';');
+        cout << words.substr(0, pos) << endl;
+        vecWords.push_back(words);
 
-            cout << words << endl;
-            if (words == "typ") {
-                numofLines++;
-            }
+        // vecWords.push_back(words);
+        vector<TweetParser> tweets;
+        numofLines++;
+    }
+
+
+    for (unsigned int i = 0; i < vecWords.size(); i++){
+        if (vecWords.at(i) == typs) {
+            vecWords.erase(vecWords.at(i));
         }
+        cout << vecWords.at(i) << endl;
     }
-    for (unsigned int i = 0; i < sizeof(words); i++) {
-        // size_t position = word.find("#typ:");
-        // TweetParser.setType(word.substr())
-        // word
-    }
+
+    cout << numofLines << endl;
+
+
+
 
 }
 
