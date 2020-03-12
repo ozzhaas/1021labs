@@ -18,6 +18,19 @@ ColorPixel::ColorPixel(unsigned char r, unsigned char g, unsigned char b) {
 
 ColorPixel::~ColorPixel(){};
 
+void ColorPixel::setR(unsigned char r) {
+    red = r;
+}
+
+void ColorPixel::setG(unsigned char g) {
+    green = g;
+}
+
+void ColorPixel::setB(unsigned char b) {
+    blue = b;
+}
+
+
 
 //Getters//
 unsigned char ColorPixel::getRed()const {
@@ -35,9 +48,9 @@ unsigned char ColorPixel::getBlue()const {
 }
 
 
-GrayPixel ColorPixel::getGrayPix()const {
-    return gPixel;
-}
+// GrayPixel ColorPixel::getGrayPix()const {
+//     return gPixel;
+// }
 
 
 void ColorPixel::writePixel(ofstream& output) {
@@ -48,7 +61,6 @@ void ColorPixel::writePixel(ofstream& output) {
 ColorPixel ColorPixel::readPixel(ifstream& input) {
     unsigned char r, g, b;
     input >> r >> g >> b;
-
     ColorPixel temp(r, g, b);
     return temp;
 }

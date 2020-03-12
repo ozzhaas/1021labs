@@ -7,8 +7,9 @@
 #include "header.h"
 
 
-Header::Header(string m, int w, int h, int mv) {
+Header::Header(string m, string g, int w, int h, int mv) {
     magic = m;
+    garbage = g;
     width = w;
     height = h;
     maxVal = mv;
@@ -18,6 +19,11 @@ Header::Header(string m, int w, int h, int mv) {
 void Header::setMagic(string m) {
     magic = m;
 }
+
+void Header::setGarb(string g) {
+    garbage = g;
+}
+
 
 
 void Header::setWidth(int w) {
@@ -29,9 +35,18 @@ void Header::setHeight(int h) {
     height = h;
 }
 
+void Header::setMaxVal(int mv){
+    maxVal = mv;
+}
+
 
 string Header::getMagic()const {
     return magic;
+}
+
+
+string Header::getGarb()const {
+    return garbage;
 }
 
 
@@ -44,7 +59,22 @@ int Header::getHeight()const {
     return height;
 }
 
+int Header::getMVal()const {
+    return maxVal;
+}
+
+void Header::readHeader(ifstream& inputFile) {
+    getline(inputFile, magic);
+    getline(inputFile, garbage);
+    inputFile >> width;
+    inputFile >> height;
+    inputFile >> maxVal;
+}
+
+
+
+
 
 void Header::writeHeader(ofstream& outputFile) {
-    outputFile << getMagic << endl << width << " " << height << endl << maxVal << endl;
+    outputFile << magic << endl << garbage << endl << width << " " << height << endl << maxVal << endl;
 }

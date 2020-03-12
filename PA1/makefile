@@ -1,10 +1,8 @@
 make:
-	g++ driver.cpp replicator.cpp colorPixel.cpp grayPixel.cpp ppm.cpp pgm.cpp -g -Wall -std=c++11
+	g++ replicator.cpp colorPixel.cpp header.cpp -g -Wall -std=c++11
 
 run:
-	./a.out
+	./a.out chips.pgm chipGrayCopy.ppm
 
 clean:
 	rm ./a.out
-
-	
