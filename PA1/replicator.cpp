@@ -48,6 +48,8 @@ int main (int argc, char* argv[]) {
     ofstream outputFile;
     outputFile.open(argv[2], ios::binary);
 
+
+
     if (checkFile(inputFile) == true) {
 
         Header head;
@@ -56,6 +58,8 @@ int main (int argc, char* argv[]) {
         if ((head.getMagic() == "P5") || (head.getMagic() == "P6")) {
             ColorPixel tempPix(255, 255, 255);
             vector<ColorPixel> VecOfPix;
+
+			cout << head.getWidth() << " " << head.getHeight() << endl;
 
             VecOfPix.resize(head.getHeight() * head.getWidth());
             for (unsigned int i = 0; i < VecOfPix.size(); i++) {

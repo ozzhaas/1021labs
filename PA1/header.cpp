@@ -65,9 +65,11 @@ int Header::getMVal()const {
 
 void Header::readHeader(ifstream& inputFile) {
     getline(inputFile, magic);
-    getline(inputFile, garbage);
+    inputFile.ignore(45, '\n');
     inputFile >> width;
     inputFile >> height;
+    cout << width << endl;
+    cout << height << endl;
     inputFile >> maxVal;
 }
 
@@ -76,5 +78,5 @@ void Header::readHeader(ifstream& inputFile) {
 
 
 void Header::writeHeader(ofstream& outputFile) {
-    outputFile << magic << endl << garbage << endl << width << " " << height << endl << maxVal << endl;
+    outputFile << magic << endl << width << " " << height << endl << maxVal << endl;
 }
