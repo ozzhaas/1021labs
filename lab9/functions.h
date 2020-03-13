@@ -1,7 +1,7 @@
 /*Kellen Haas
  *CPSC 1021
  *Lab9
- *3/10/20
+ *3/13/20
 */
 
 #ifndef FUNCTIONS_H
@@ -14,13 +14,14 @@
 #include <fstream>
 #include <iomanip>
 #include <algorithm>
-#include <tuple>
 #include "tweetParser.h"
 
-void readTweet(fstream&, TweetParser&);
+void readTweet(fstream&, TweetParser&, int&);
 void isOpen(fstream&, char*, ios::openmode);
+string parser(string, string);
+void toUpper(char&);
 bool checkArgs(int);
-void printTweet(fstream&);
+void printTweet(fstream&, TweetParser&);
 
 
 #endif

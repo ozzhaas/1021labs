@@ -1,7 +1,7 @@
 /*Kellen Haas
  *CPSC 1021
  *Lab9
- *3/10/20
+ *3/13/20
 */
 
 #include "tweetParser.h"
@@ -10,65 +10,102 @@
 
 using namespace std;
 
-
-void readTweet(fstream& input, TweetParser& tweets){
-    string line;
-    string words[300];
-    string noHash;
-    string typs;
-    string dets;
-    string locs;
-    string lats;
-    string lons;
-    int numofLines = 0;
-    int i = 0;
-
-
-    while (getline(input, noHash, '#')) {
-        stringstream string(noHash);
-        getline(string, line, ';');
-        stringstream wordStream(line);
-        while (wordStream >> words[i]) {
-            cout << "Pos: " << i << " " << words[i] << endl;
-            numofLines++;
-            i++;
-        }
-    }
-
-    for (int j = 0; j < numofLines; j++) {
-        if (words[j] == "typ"){
-            if (words[j+2] == "det") {
-                tweets.setType(words[j+1]);
-            }
-            else {
-                typs = words[j + 1] + " " + words[j + 2];
-
-                tweets.setType(typs);
-            }
-            cout << "Category: " << tweets.getType() << endl;
-        }
-        else if (words[j] == "det") {
-            int start = words[j].find("det");
-            int end = words[j].find("loc");
-3
-
-        }
-        else if (words[j] == "loc") {
-
-        }
-        else if (words[j] == "lat") {
-
-        }
-        else if (words[j] == "lng") {
-
-        }
-    }
-
-
-    cout << numofLines << endl;
+/**************************************************************************
+  Function: printTweet
+  Parameters:input file stream passed by reference and a TweetParser
+  object passed by reference.
+  Return Type: void
+  Purpose: this function will take the tweet object passed into it and
+  print all of the values from the tweet
+  (type, detail, location, latitude, longitude)
+***************************************************************************/
+void printTweet(fstream& input, TweetParser& tweets) {
+        cout << "Type:" << right << fixed << "           " << tweets.getType()
+             << endl;
+        cout << "Detail:" << right << fixed << "         " << tweets.getDetail()
+             << endl;
+        cout << "Location:" << right << fixed << "       " << tweets.getLocation()
+             << endl;
+        cout << "Latitude:" << right << fixed << "       " << tweets.getLat()
+             << endl;
+        cout << "Longitude:" << right << fixed << "      " << tweets.getLon()
+             << endl << endl;
 }
 
 
+/**************************************************************************
+  Function: readTweet
+  Parameters: input file stream passed by reference, a TweetParser object
+  passed by reference, and the number of lines as an int passed by reference.
+  Return Type: void
+  Purpose: Read all of the information from the input file, call the parser
+  function to break up the content, and then store the content into the proper
+  class members.
+***************************************************************************/
+void readTweet(fstream& input, TweetParser& tweets, int& numofLines){
+    string line;
+    char typs[] = "#typ ";
+    char dets[] = "#det ";
+    char locs[] = "#loc ";
+    char lats[] = "#lat ";
+    char lons[] = "#lng ";
+
+    cout << "\n\n\t\tWelcome to Tweeter\n\n";
+    cout << "\n~~~~~~~~~~~~~~~~~~~~~~Your Feed~~~~~~~~~~~~~~~~~~~~~~\n";
+    while (getline(input, line)) {
+
+        string stringTyp = parser(line, typs);
+        for (unsigned int i = 0; i < sizeof(stringTyp); i++){
+            toUpper(stringTyp[i]);
+        }
+        tweets.setType(stringTyp);
+
+        string stringDet = parser(line, dets);
+        tweets.setDetail(stringDet);
+
+        string stringLoc = parser(line, locs);
+        tweets.setLocation(stringLoc);
+
+        string stringLat = parser(line, lats);
+        tweets.setLat(stringLat);
+
+        string stringLon = parser(line, lons);
+        tweets.setLon(stringLon);
+        numofLines++;
+        printTweet(input, tweets);
+    }
+}
+
+
+
+/**************************************************************************
+  Function: parser
+  Parameters: a string for the line and a string for the category of the content
+  (typ, det, loc, lat, lng)
+  Return Type: string that is fully parsed
+  Purpose: take the line string passed into the function and use the find()
+  function in C++ to find the first instance of the specific category also
+  passed in as a parameter. Then it will create a substr with the typ value
+  and then it will find the semicolon. It will create a new substr from the start
+  of the previous substr to the semicolon. It will finally return this string
+  that is fully parsed.
+***************************************************************************/
+string parser(string line, string category) {
+    char semi[] = ";";
+    size_t pos = line.find(category);
+    string newLine = line.substr(pos+5, ';');
+    size_t semipos = newLine.find(semi);
+    string tempString = newLine.substr(0, semipos);
+    return tempString;
+}
+
+/*Transforms the typ category to uppercase for output*/
+void toUpper(char& lower) {
+    lower = toupper(lower);
+}
+
+
+/*Checks to see if the file opened properly*/
 void isOpen(fstream& file, char* fileName, ios::openmode openFor){
     file.open(fileName, openFor);
     if (file.fail()) {
@@ -78,15 +115,11 @@ void isOpen(fstream& file, char* fileName, ios::openmode openFor){
 }
 
 
+/*Checks the number of command line arguments*/
 bool checkArgs(int argc){
     if (argc != 2) {
         cout << "No input file provided. Try again.\n";
         return false;
     }
     return true;
-}
-
-
-void printTweet(fstream&){
-
 }

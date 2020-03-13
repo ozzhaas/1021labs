@@ -1,7 +1,7 @@
 /*Kellen Haas
  *CPSC 1021
  *Lab9
- *3/10/20
+ *3/13/20
 */
 
 #ifndef TWEETPARSER_H
@@ -10,6 +10,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <fstream>
 #include <iomanip>

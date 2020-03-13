@@ -1,7 +1,7 @@
 /*Kellen Haas
  *CPSC 1021
  *Lab9
- *3/10/20
+ *3/13/20
 */
 
 #include "tweetParser.h"
@@ -10,6 +10,7 @@
 
 using namespace std;
 
+//Constructors//
 TweetParser::TweetParser(){}
 
 
@@ -20,6 +21,7 @@ TweetParser::TweetParser(string typ, string det, string loca, string lat, string
     longitude = lon;
 }
 
+//Destructor//
 TweetParser::~TweetParser() {}
 
 //Setters//
