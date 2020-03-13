@@ -1,4 +1,5 @@
 /*Kellen Haas
+ *Patrick Dodd
  *CPSC 1021
  *Lab8
  *3/3/20

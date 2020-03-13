@@ -1,11 +1,12 @@
 /*Kellen Haas
  *CPSC 1020
+ *Patrick Dodd
  *Assignment 1
  *2/27/20
 */
 
-#ifndef COLORPIXEL_H
-#define COLORPIXEL_H
+#ifndef PIXEL_H
+#define PIXEL_H
 
 #include <string>
 #include <fstream>
@@ -17,7 +18,7 @@
 using namespace std;
 
 
-class ColorPixel {
+class Pixel {
     private:
 
         unsigned char red, green, blue;
@@ -25,8 +26,8 @@ class ColorPixel {
 
     public:
 
-        ColorPixel(unsigned char r = 0, unsigned char g = 0, unsigned char b = 0);
-        ~ColorPixel();
+        Pixel(unsigned char r = 0, unsigned char g = 0, unsigned char b = 0);
+        ~Pixel();
 
         void setR(unsigned char);
         void setG(unsigned char);
@@ -39,7 +40,7 @@ class ColorPixel {
 
 
         void writePixel(ofstream&);
-        ColorPixel readPixel(ifstream&);
+        Pixel readPixel(ifstream&);
 
 
 };

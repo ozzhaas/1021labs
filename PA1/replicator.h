@@ -1,4 +1,5 @@
 /*Kellen Haas
+ *Patrick Dodd
  *CPSC 1020
  *Assignment 1
  *2/27/20
@@ -8,11 +9,11 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include "colorPixel.h"
+#include "Pixel.h"
 #include "grayPixel.h"
 #include "header.h"
 
-// 
+//
 // class Replicator {
 //
 //     private:

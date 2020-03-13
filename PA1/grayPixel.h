@@ -1,4 +1,5 @@
 /*Kellen Haas
+ *Patrick Dodd
  *CPSC 1020
  *Assignment 1
  *2/27/20
@@ -20,14 +21,13 @@ using namespace std;
 
 class GrayPixel {
     private:
-        int width;
-        int height;
-        int maxVal;
+        int row;
+        int col;
 
 
     public:
         GrayPixel();
-        GrayPixel(int, int, int);
+        GrayPixel(int, int);
 
         void writeGrayPixel(ofstream&);
         GrayPixel readGrayPixel(ifstream&);

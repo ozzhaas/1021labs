@@ -1,4 +1,5 @@
 /*Kellen Haas
+ *Patrick Dodd
  *CPSC 1021
  *Lab8
  *3/3/20
@@ -65,12 +66,14 @@ int Header::getMVal()const {
 
 void Header::readHeader(ifstream& inputFile) {
     getline(inputFile, magic);
-    inputFile.ignore(45, '\n');
+    // inputFile >> garbage;
+    // inputFile.ignore(45, '\n');
+    getline(inputFile, garbage);
     inputFile >> width;
     inputFile >> height;
+    inputFile >> maxVal;
     cout << width << endl;
     cout << height << endl;
-    inputFile >> maxVal;
 }
 
 
@@ -78,5 +81,5 @@ void Header::readHeader(ifstream& inputFile) {
 
 
 void Header::writeHeader(ofstream& outputFile) {
-    outputFile << magic << endl << width << " " << height << endl << maxVal << endl;
+    outputFile << magic << endl << garbage << endl << width << " " << height << endl << maxVal << endl;
 }
