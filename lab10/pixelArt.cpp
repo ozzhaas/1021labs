@@ -14,7 +14,6 @@ void pixelArt::readArts(string fileName) {
     char temp;
     int intTemp;
     input.open(fileName);
-    int y = 0;
 
     cout << "Width: " << w << endl << "Height: " << h << endl;
 
@@ -25,8 +24,14 @@ void pixelArt::readArts(string fileName) {
             tempVec.push_back(intTemp);
         }
         pixels.push_back(tempVec);
-        y++;
     }
+
+    // for (int i = 0; i < w; i++) {
+    //     for (int j = 0; j < h; j++) {
+    //         cout << pixels.at(i).at(j);
+    //     }
+    // }
+    // cout << endl;
 
 }
 
@@ -53,12 +58,39 @@ int pixelArt::getH()const {
 pixelArt pixelArt::operator + (int num) {
 // add num to every number in the 2D vector
     pixelArt tempPlus(w, h);
-    vector <int> tempVec;
-    for (int i = 0; i < tempPlus.getW(); i++) {
-        for (int j = 0; j < tempPlus.getH(); j++) {
-            tempVec.push_back(pixels[i][j] + num);
+    vector <int> tempVec(0, 0);
+
+    cout << "\n~~~~~~~~~~~Pixels before adding " << num << " ~~~~~~~~~~~\n";
+    for (int i = 0; i < h; i++) {
+        for (int j = 0; j < w; j++) {
+            cout << pixels[i][j];
         }
-        tempPlus.pixels.push_back(tempVec);
+        cout << endl;
+    }
+
+    tempPlus.pixels.clear();
+    tempVec.clear();
+
+    cout << "\n~~~~~~~~~~~New numbers to push to vector" << " ~~~~~~~~~~~\n";
+    for (int i = 0; i < h; i++) {
+        for (int j = 0; j < w; j++) {
+            int newNum = pixels[i][j] + num;
+            cout << newNum;
+            tempVec.push_back(newNum);
+            tempPlus.pixels.push_back(tempVec);
+        }
+        // tempPlus.pixels.push_back(tempVec);
+        cout << endl;
+    }
+
+
+
+    cout << "\n~~~~~~~~~~~Pixels after adding " << num << " ~~~~~~~~~~~\n";
+    for (int i = 0; i < tempPlus.getH(); i++) {
+        for (int j = 0; j < tempPlus.getW(); j++) {
+            cout << pixels[i][j];
+        }
+        cout << endl;
     }
     return tempPlus;
 }
@@ -68,11 +100,28 @@ pixelArt pixelArt::operator + (int num) {
 pixelArt pixelArt::operator - (int num) {
     pixelArt tempMinus(w, h);
     vector <int> tempVec;
-    for (int i = 0; i < tempMinus.getW(); i++) {
-        for (int j = 0; j < tempMinus.getH(); j++) {
-            tempVec.push_back(pixels[i][j] - num);
+
+    // for (int i = 0; i < h; i++) {
+    //     for (int j = 0; j < w; j++) {
+    //         cout << pixels[i][j];
+    //     }
+    //     cout << endl;
+    // }
+
+
+    for (int i = 0; i < h; i++) {
+        for (int j = 0; j < w; j++) {
+            tempVec.push_back(abs(pixels[i][j] - num));
         }
         tempMinus.pixels.push_back(tempVec);
+    }
+
+    cout << "\n~~~~~~~~~~~Pixels after subtracting~~~~~~~~~~~\n";
+    for (int i = 0; i < tempMinus.getH(); i++) {
+        for (int j = 0; j < tempMinus.getW(); j++) {
+            cout << tempMinus.pixels[i][j];
+        }
+        cout << endl;
     }
     return tempMinus;
 }
@@ -82,38 +131,51 @@ pixelArt pixelArt::operator - (int num) {
 pixelArt pixelArt::operator + (const pixelArt& pa) {
     pixelArt tempObj(w, h);
     vector<int> tempVec;
-    for (int i = 0; i < pa.getW(); i++) {
-        for (int j = 0; j < pa.getH(); j++) {
-            tempVec.push_back(pa.getPixel(i, j) + this->getPixel(i, j));
+
+    // for (int i = 0; i < h; i++) {
+    //     for (int j = 0; j < w; j++) {
+    //         cout << pixels[i][j];
+    //     }
+    //     cout << endl;
+    // }
+
+    for (int i = 0; i < h; i++) {
+        for (int j = 0; j < w; j++) {
+            tempVec.push_back(pa.pixels[i][j] + this->pixels[i][j]);
         }
         tempObj.pixels.push_back(tempVec);
     }
-    // pixelArt tempAddClass(w, h);
-    // tempAddClass = tempObj + pa;
-    return tempObj;
+    //
+    // cout << "\n~~~~~~~~~~~Pixels after adding the objects together~~~~~~~~~~~\n";
+    // for (int i = 0; i < h; i++) {
+    //     for (int j = 0; j < w; j++) {
+    //         cout << tempObj.pixels.at(i).at(j);
+    //     }
+    //     cout << endl;
+    // }
+
+    pixelArt tempAddClass(w, h);
+    tempAddClass = tempObj + pa;
+    return tempAddClass;
 }
 
 //Operator << Overloaded to mimic cout and print the new pixelArt to the
 //terminal
 ostream& operator<<(ostream& os, const pixelArt& pa) {
 
-    for (int i = 0; i < pa.getW(); i++) {
-        for (int j = 0; j < pa.getH(); j++) {
-            if (pa.getPixel(i, j) == 0) {
-                os << pa.getPixel(i, j);
-            }
-            else if (pa.getPixel(i, j) == '\n') {
-                os << pa.getPixel(i, j);
-            // else if (i == pa.getW()) {
-            //     os << '\n';
-            //
+    for (int i = 0; i < pa.getH(); i++) {
+        for (int j = 0; j < pa.getW(); j++) {
+            // os << pa.pixels[i][j];
+            if (pa.pixels[i][j] == 9) {
+                os << " ";
             }
             else {
                 // os << "test";
-                os << " ";
+                os << pa.pixels[i][j];
             }
 
         }
+        os << endl;
     }
     // os << "test";
     return os;
