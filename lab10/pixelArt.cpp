@@ -16,13 +16,13 @@ void pixelArt::readArts(string fileName) {
     int intTemp;
     input.open(fileName);
 
-    cout << "Width: " << w << endl << "Height: " << h << endl;
+    // cout << "Width: " << w << endl << "Height: " << h << endl;
+
 
     for(int y = 0; y < h; y++) {
-        // input >> temp;
         getline(input, line);
-        intTemp = line[y] - '0';
-        // intTemp = temp - '0';
+        temp = line[y];
+        intTemp = temp - '0';
         vector<int> tempVec;
         for (int x = 0; x < w; x++){
             tempVec.push_back(intTemp);
@@ -57,24 +57,13 @@ int pixelArt::getH()const {
 pixelArt pixelArt::operator + (int num) {
     pixelArt tempPlus(w, h);
 
-    cout << "\n~~~~~~~~~~~New numbers to push to vector" << " ~~~~~~~~~~~\n";
     for (int i = 0; i < h; i++) {
         vector <int> tempVec;
         for (int j = 0; j < w; j++) {
             int newNum = pixels[i][j] + num;
-            cout << newNum;
             tempVec.push_back(newNum);
         }
         tempPlus.pixels.push_back(tempVec);
-        cout << endl;
-    }
-
-    cout << "\n~~~~~~~~~~~Pixels after adding " << num << " ~~~~~~~~~~~\n";
-    for (int i = 0; i < h; i++) {
-        for (int j = 0; j < w; j++) {
-            cout << tempPlus.pixels[i][j];
-        }
-        cout << endl;
     }
     return tempPlus;
 }
@@ -90,17 +79,10 @@ pixelArt pixelArt::operator - (int num) {
     for (int i = 0; i < h; i++) {
         vector <int> tempVec;
         for (int j = 0; j < w; j++) {
-            tempVec.push_back(pixels[i][j] - num);
+            int newNum = pixels[i][j] - num;
+            tempVec.push_back(newNum);
         }
         tempMinus.pixels.push_back(tempVec);
-    }
-
-    cout << "\n~~~~~~~~~~~Pixels after subtracting~~~~~~~~~~~\n";
-    for (int i = 0; i < h; i++) {
-        for (int j = 0; j < w; j++) {
-            cout << tempMinus.pixels[i][j];
-        }
-        cout << endl;
     }
     return tempMinus;
 }
@@ -111,19 +93,16 @@ pixelArt pixelArt::operator - (int num) {
 //pixelArt Class
 pixelArt pixelArt::operator + (const pixelArt& pa) {
     pixelArt tempObj(w, h);
-    vector<int> tempVec;
 
 
     for (int i = 0; i < h; i++) {
+        vector<int> tempVec;
         for (int j = 0; j < w; j++) {
             tempVec.push_back(pa.pixels[i][j] + this->pixels[i][j]);
         }
         tempObj.pixels.push_back(tempVec);
     }
-
-    pixelArt tempAddClass(w, h);
-    tempAddClass = tempObj + pa;
-    return tempAddClass;
+    return tempObj;
 }
 
 
