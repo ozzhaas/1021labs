@@ -8,15 +8,18 @@
 
 using namespace std;
 
-Tiger::Tiger(string t_sound, string t_name, int t_age, double t_weight) : Animal(t_age, t_weight) {
+//Constructor to create Tiger objects that are a child of the Animal class
+Tiger::Tiger(string t_name, string t_sound, int t_age, double t_weight) : Animal(t_age, t_weight) {
     soundsLike = t_sound;
     name = t_name;
     setAge(t_age);
     setWeight(t_weight);
 }
 
+//Tiger destructor
 Tiger::~Tiger() {}
 
+//Getters
 string Tiger::getVoice() {
     return soundsLike;
 }
@@ -25,6 +28,7 @@ string Tiger::getName() {
     return name;
 }
 
+//Setters
 void Tiger::setVoice(string t_sound) {
     soundsLike = t_sound;
 }
@@ -36,9 +40,9 @@ void Tiger::setName(string t_name) {
 
 void Tiger::printInfo() {
     //cout tiger info
-    cout << "~~~~~~~~~~~~~~~~~Tiger~~~~~~~~~~~~~~~~~" << endl;
-    cout << "\tName: " << setw(10) << getName() << endl;
-    cout << "\tAge: " << setw(10) << getAge() << endl;
-    cout << "\tWeight: " << setw(10) << getWeight() << endl;
-    cout << "\tSound: " << setw(10) << getVoice() << endl;
+    cout << endl << "~~~~~~~~~~~~~~~~~Tiger~~~~~~~~~~~~~~~~~" << endl;
+    cout << "\tName:  \t\t" << left << getName() << endl;
+    cout << "\tAge:   \t\t" << left << getAge() << endl;
+    cout << "\tWeight:\t\t" << left << getWeight() << endl;
+    cout << "\tSound: \t\t" << left << getVoice() << endl << endl;
 }
