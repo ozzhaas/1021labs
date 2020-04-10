@@ -14,18 +14,15 @@ int main() {
 
 
     //Create two Tiger objects
-    Tiger cat("Rajah", "ROAR!", 4, 300.5);
-    Tiger tig("Shere Khan", "Chuff", 10, 290.9);
-    Animal* t1 = new Tiger(cat);
-    Animal* t2 = new Tiger(tig);
+    Animal* t1 = new Tiger("Rajah", "ROAR!", 4, 300.5);;
+    Animal* t2 = new Tiger("Shere Khan", "Chuff", 10, 290.9);
     myAnimals.push_back(t1);
     myAnimals.push_back(t2);
 
     //Create two Monkey objects
-    Monkey primate("King Louie", "Eeee eee ooohaha", 5, 95.7);
-    Monkey chimp("Abu", "Eeek aaak oook", 12, 79.3);
-    Animal* m1 = new Monkey(primate);
-    Animal* m2 = new Monkey(chimp);
+
+    Animal* m1 = new Monkey("King Louie", "Eeee eee ooohaha", 5, 95.7);
+    Animal* m2 = new Monkey("Abu", "Eeek aaak oook", 12, 79.3);
     myAnimals.push_back(m1);
     myAnimals.push_back(m2);
 

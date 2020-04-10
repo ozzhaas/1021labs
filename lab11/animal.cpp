@@ -33,7 +33,7 @@ void Animal::setWeight(double w) {
     weight = w;
 }
 
-void Animal::printInfo()const {
+void Animal::printInfo() {
     //test
     cout << "Test\n";
 }
