@@ -13,22 +13,36 @@ void pixelArt::readArts(string fileName) {
     ifstream input;
     string line;
     char temp;
+    vector<char> garbage;
     int intTemp;
     input.open(fileName);
 
-    // cout << "Width: " << w << endl << "Height: " << h << endl;
-
 
     for(int y = 0; y < h; y++) {
-        getline(input, line);
-        temp = line[y];
-        intTemp = temp - '0';
         vector<int> tempVec;
-        for (int x = 0; x < w; x++){
-            tempVec.push_back(intTemp);
+        for (int x = 0; x < w+1; x++){
+            input.get(temp);
+            if (temp == '\n') {
+                garbage.push_back(temp);
+            }
+            else {
+                intTemp = temp - '0';
+                tempVec.push_back(intTemp);
+            }
         }
         pixels.push_back(tempVec);
     }
+
+    // Second Option
+    // while (getline(input, line)) {
+    //     vector<int> tempVec;
+    //     for (int x = 0; x < w; x++){
+    //             temp = line[x];
+    //             intTemp = temp - '0';
+    //             tempVec.push_back(intTemp);
+    //     }
+    //     pixels.push_back(tempVec);
+    // }
 
 }
 
@@ -80,9 +94,11 @@ pixelArt pixelArt::operator - (int num) {
         vector <int> tempVec;
         for (int j = 0; j < w; j++) {
             int newNum = pixels[i][j] - num;
+            // cout << newNum;
             tempVec.push_back(newNum);
         }
         tempMinus.pixels.push_back(tempVec);
+        // cout << endl;
     }
     return tempMinus;
 }
