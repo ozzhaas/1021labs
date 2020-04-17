@@ -1,0 +1,2 @@
+In the makefile be sure to set file1 to the name of the file you want to
+read in and file2 to the name of the file that you are going to print out. 
